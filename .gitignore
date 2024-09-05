@@ -1,0 +1,61 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de configuration Drupal
+/web/sites/*/settings*.php
+/web/sites/*/services*.yml
+
+# Fichiers de configuration PHP
+/web/sites/default/php.ini
+
+# Dossiers générés par Drupal
+/web/sites/*/files
+/web/sites/*/private
+
+# Dossiers de modules, thèmes et profils contrib
+/web/modules/contrib
+/web/themes/contrib
+/web/profiles/contrib
+
+# Dossiers de dépendances gérés par Composer
+/vendor
+/core
+
+# Fichiers de configuration d'environnement local
+/.env
+/.env.local
+
+# Fichiers de logs
+/web/sites/*/logs
+
+# Fichiers temporaires
+/tmp
+
+# Fichiers de sauvegarde
+*.bak
+*.swp
+
+# Fichiers de cache
+/web/sites/*/cache
+
+# Fichiers de configuration d'éditeur
+.idea
+.vscode
+
+# Fichiers de dépendances front-end (si gérés séparément)
+/node_modules
+/bower_components
+
+# Fichiers de compilation
+/sites/*/css
+/sites/*/js
+
+# Fichiers de build
+/build
+
+# Fichiers de déploiement
+/deploy
+
+# Fichiers de test de couverture
+/coverage
