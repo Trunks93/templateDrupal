@@ -20,7 +20,7 @@ Thumbs.db
 
 # Dossiers de dépendances gérés par Composer
 /vendor
-/core
+/web/core
 
 # Fichiers de configuration d'environnement local
 /.env
