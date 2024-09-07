@@ -3,24 +3,24 @@
 Thumbs.db
 
 # Fichiers de configuration Drupal
-/web/sites/*/settings*.php
-/web/sites/*/services*.yml
+/src/web/sites/*/settings*.php
+/src/web/sites/*/services*.yml
 
 # Fichiers de configuration PHP
-/web/sites/default/php.ini
+/src/web/sites/default/php.ini
 
 # Dossiers générés par Drupal
-/web/sites/*/files
-/web/sites/*/private
+/src/web/sites/*/files
+/src/web/sites/*/private
 
 # Dossiers de modules, thèmes et profils contrib
-/web/modules/contrib
-/web/themes/contrib
-/web/profiles/contrib
+/src/web/modules/contrib
+/src/web/themes/contrib
+/src/web/profiles/contrib
 
 # Dossiers de dépendances gérés par Composer
-/vendor
-/web/core
+/src/vendor
+/src/web/core
 
 # Fichiers de configuration d'environnement local
 /.env
@@ -37,7 +37,7 @@ Thumbs.db
 *.swp
 
 # Fichiers de cache
-/web/sites/*/cache
+/src/web/sites/*/cache
 
 # Fichiers de configuration d'éditeur
 .idea
