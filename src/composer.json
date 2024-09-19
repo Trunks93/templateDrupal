@@ -114,5 +114,11 @@
         "drush:cache-clear": [
             "./vendor/bin/drush cr"
         ]
+    },
+    "require-dev": {
+        "drupal/core-dev": "^10.3",
+        "phpstan/phpstan": "^1.10",
+        "mglaman/phpstan-drupal": "^1.2",
+        "phpstan/extension-installer": "^1.3"
     }
 }
