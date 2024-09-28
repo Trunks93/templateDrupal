@@ -3,7 +3,7 @@
 Thumbs.db
 
 # Fichiers de configuration Drupal
-/src/web/sites/*/settings*.php
+/src/web/sites/*/settings.*.php
 /src/web/sites/*/services*.yml
 
 # Fichiers de configuration PHP

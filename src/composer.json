@@ -31,6 +31,7 @@
         "drupal/pathauto": "^1.13",
         "drupal/phpmailer_smtp": "^2.2",
         "drupal/queue_mail": "^1.6",
+        "drupal/redirect_after_login": "^3.0",
         "drupal/redis": "^1.8",
         "drupal/search_api": "^1.35",
         "drupal/twig_tweak": "^3.4",
