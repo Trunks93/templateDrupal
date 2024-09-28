@@ -1,0 +1,21 @@
+name: Orange theme
+description: Orange theme est le theme utilisé pour la V2 du projet Yelen
+type: theme
+core_version_requirement: ^10
+package: Custom
+base theme: claro
+screenshot: orange.png
+regions:
+  search_bar: 'Search bar'
+  hero_header: 'Hero Header'
+  hero_sidebar: 'Hero Sidebar'
+  menu: 'Menu'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  sidebar: 'Sidebar'
+  page_footer: 'Page footer'
+
+libraries:
+  - orange_theme/global

@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% if orange_yelen_search_term %}
+<div class="row mb-2 mb-md-0">
+  <div class="col-md-9 col-12">
+    <h3 class="orange-yelen-title">{{ 'Résultats de recherche pour:' | t}} <strong class="text-primary">"{{ orange_yelen_search_term }}"</strong></h3>
+  </div>
+  <div class="col-md-3 col-12">
+    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#rateSearchModal">
+      Evaluer la recherche
+    </button>
+  </div>
+</div>
+{% endif %}
+<section class="yelen-search-result__list">
+  {% for row in rows %}
+    {%
+      set row_classes = [
+      default_row_class ? 'views-row',
+      'search-result-item'
+    ]
+    %}
+    <div{{ row.attributes.addClass(row_classes) }}>
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex align-center">
+            <div class="media">
+              {% set image_path = row.content['#row']._entity.field_image ? row.content['#row']._entity.field_image[0].entity.uri.value : 'modules/orange_yelen_search' ~ '/img/search-img.png' %}
+              {% set image_url = file_url(image_path) %}
+              {% set image_alt = row.content['#row']._entity.field_image ? row.content['#row']._entity.field_image[0].alt : 'Orange Search' %}
+              <img
+                class="img-fluid"
+                src="{{ image_url }}"
+                alt="{{ image_alt }}"
+              >
+            </div>
+            <div class="text">
+              <h5 class="card-title">
+                <a href="{{ row.content['#row'].search_api_url[0] }}"> {{ row.content['#row'].title[0] }}</a>
+              </h5>
+              {% if(row.content['#row'].body) %}
+              <div class="short-description">
+                {{row.content['#row'].body[0] | raw | t}}
+              </div>
+              {% endif %}
+            </div>
+            <div class="action">
+              <a class="btn btn-outline-secondary" href={{ row.content['#row'].search_api_url[0] }}>{{ 'Voir plus' | t }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <!-- Modal -->
+  <div class="modal fade" id="rateSearchModal" tabindex="-1" aria-labelledby="rateSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title h5" id="rateSearchModalLabel">Evaluer la recherche effectuée</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Close"><span class="visually-hidden">Close</span></button>
+        </div>
+          <div class="modal-body">
+            {{ search_rating_form }}
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+

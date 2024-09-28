@@ -1,0 +1,81 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div{{ row.attributes.addClass(row_classes) }}>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
+       data-bs-interval="130000">
+    <div class="carousel-indicators">
+      {% for row in rows %}
+        <button type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="{{ loop.index - 1 }}" {% if loop.index == 1 %}class="active"{% endif %}
+                aria-current="true" aria-label="Slide {{ loop.index }}"></button>
+      {% endfor %}
+    </div>
+    <div class="carousel-inner">
+      {% for row in rows %}
+        {% set row_classes = [
+          default_row_class ? 'views-row',
+        ] %}
+
+        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+          <div class="row">
+
+            <div class="col-md-6  back-texte-carousel">
+              <div class="promo-vacances p-4 ">
+                <h2>{{ row.content['field_titre']["#object"].field_titre.value }}</h2>
+                {{ row.content['field_titre']["#object"].body.value|raw }}
+                <!--h3>Promo Vacances <br> EasyBox du <br> <span class="texte-orange"> 01 </span> au <span
+                    class="texte-orange">09 Août 2024</span></h3-->
+                <div>
+                  {% set uri = row.content['field_lien']["#object"].field_lien.value[0]['uri'] %}
+                  {% set linkTitle = row.content['field_lien']["#object"].field_lien.value[0]['title'] %}
+                  <a class="btn btn-primary bouton-infos" href="{{ uri }}">{{linkTitle}}</a>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 back-texte-carousel">
+              <div class="p-4">
+                {{ row.content['field_image'] }}
+                <!--img src="https://placehold.co/600x400" class="img-fluid w-100 carousel-image" alt="Description de l'image"
+                     style="height: 400px; object-fit: cover; padding: 65px;"-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {# - dump(row.content)   -#}
+</div>

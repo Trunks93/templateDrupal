@@ -1,0 +1,52 @@
+
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div class="bloc-offre">
+  <h2 class="orange-yelen-title">Applications</h2>
+</div>
+<div class="row">
+
+{% for row in rows %}
+  {%
+    set row_classes = [
+    default_row_class ? 'views-row',
+    'col-lg-5','my-card'
+  ]
+  %}
+
+  <div{{ row.attributes.addClass(row_classes) }}>
+    <div class="row">
+      <div class="bloc-img">
+        <img class="petite-icon img-fluid" src="/{{ directory }}/assets/images/internet-et-fibre-newAccueil.png"  alt="">
+      </div>
+      <div class="bloc-txt">
+        <a href="{{ row['content']['#row']._entity.field_lien.value[0]['uri'] }}" class="text-decoration-none hover-orange">
+            <h5 class="">{{row['content']['#row']._entity.title.value }}</h5>
+            <p class="">{{ row['content']['#row']._entity.field_lien.value[0]['title'] }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>

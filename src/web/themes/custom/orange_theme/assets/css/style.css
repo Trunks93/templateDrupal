@@ -1,0 +1,275 @@
+.content-header{
+  background-color: #fff !important;
+}
+
+.body{
+  min-height: 1000px;
+}
+
+.menu-item-title{
+  display: none !important;
+}
+
+.orange-yelen-title{
+  position: relative;
+  padding-bottom: 1rem;
+
+  &::after{
+    content: "";
+    position: absolute;
+    top: 2rem;
+    width: 7%;
+    background-color: #ff7900;
+    height: 10px;
+    left: 0;
+  }
+}
+
+
+/**
+REGION
+ */
+
+.region-hero-sidebar{
+  height: 100%;
+}
+
+/**
+END REGION
+ */
+
+/**
+dans le HTML
+ */
+
+.texte-trombino-agence {
+  margin-top: 100px;
+  padding: 40px;
+}
+.texte-orange {
+  color: #f16e20;
+}
+.trombino-agence {
+  font-size: 22px;
+  color: #f16e20;
+  font-weight: 600;
+  margin-top: -80px;
+}
+.txt_collapse {
+  font-weight: normal;
+  font-size: 20px;
+}
+.back-texte-carousel {
+  background-color: black;
+  color: white;
+}
+.bloc-recherche {
+  margin-top: 30px;
+}
+.texte-trombino-agence {
+  margin-top: 100px;
+  padding: 40px;
+}
+.texte-trombino-agence {
+  margin-top: 100px;
+  padding: 40px;
+}
+.texte-orange {
+  color: #f16e20;
+}
+.trombino-agence {
+  font-size: 27px;
+  color: #f16e20;
+  font-weight: 600;
+  margin-top: -80px;
+}
+.input-trombino {
+  margin-top: 225px;
+}
+
+/* carousel */
+/* accordion */
+.barre-haut {
+  border: none;
+}
+/* accordion */
+
+.petit-bloc-rectangle  {
+  padding: 20px;
+  background-color: red;
+}
+.my-card {
+  border: 1px solid #cccccc;
+  margin-bottom: 70px;
+  margin-right: 70px;
+}
+.bloc-img {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.petite-icon
+{
+  width: 70%;
+}
+.bloc-txt {
+  width:  35%;
+  margin-left: -60px;
+  margin-top: 10px;
+}
+.icon-orange::after {
+  color: #f16e20 !important;
+}
+.txt_collapse {
+  font-weight: normal;
+  font-size: 20px;
+}
+.texte-phone {
+  text-decoration: none;
+}
+.back-trombino  {
+  background-image: url('img/q5tnynj1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  margin-left: -20px;
+  padding-right: 100px;
+}
+.bouton-infos {
+  color: white;
+}
+.promo-vacances {
+  padding-left: 80px !important;
+}
+.texte-bon-plan {
+  background-color: yellow;
+  padding: 5px;
+  color: black;
+  text-align: center;
+  margin-left: 10px;
+}
+.texte-jusqua {
+  padding-top: 45px
+}
+@media (max-width: 450px) {
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  .paginate {
+    flex-direction: row;
+    text-decoration: none;
+  }
+
+  .back-trombino {
+    margin-left: 0;
+  }
+}
+
+
+
+.icon-orange::after {
+  color: #f16e20 !important;
+}
+
+.card-custom-width {
+  margin-right: 3.5rem;
+}
+
+.card-body {
+  background-color: black;
+  color: white;
+}
+
+.card-title {
+  color: #f16e20;
+  font-size: 30px;
+}
+
+.btn-voir-plus {
+  border: 1px solid white;
+}
+
+.bloc-quiz {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 460px) {
+  .card-custom-width {
+    margin-right: 26px;
+    width: 100%;
+  }
+
+  .bloc-quiz {
+    margin-top: 20px;
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 24px;
+  }
+
+  .btn-voir-plus {
+    padding: 5px 10px;
+  }
+}
+
+.barre-haut {
+  border: none;
+}
+
+
+.texte-phone {
+  text-decoration: none;
+  color: white;
+}
+
+.texte-phone:hover {
+  color: #f16e20;
+}
+
+.txt_collapse {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+/*begin wisdom styling*/
+
+a.hover-orange:hover{
+  color:#f16e20
+}
+.orange-color-link a{
+  color:black;
+  text-decoration: none;
+}
+.orange-color-link a:hover{
+  color:#f16e20;
+  text-decoration: none;
+}
+
+.orange-yelen-title-block {
+  position:relative;
+  &::after {
+     content: "";
+     position: absolute;
+     top: 2rem;
+     width: 25%;
+     background-color: #ff7900;
+     height: 10px;
+     left: 0;
+ }
+}
+
+.utility_form{
+  border: solid 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

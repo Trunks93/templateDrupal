@@ -1,0 +1,139 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{#
+{% if orange_yelen_search_term %}
+<h3 class="orange-yelen-title">Résultats de recherche pour: <strong class="text-primary">"{{ orange_yelen_search_term }}"</strong></h3>
+{% endif %}
+#}
+{% if orange_trombino_service_term %}
+  <div class="row mb-2 mb-md-0">
+    <div class="col-md-9 col-12">
+      <h3 class="orange-yelen-title">{{ 'Résultats de recherche pour:' | t}} <strong class="text-primary">"{{ orange_trombino_service_term }}"</strong></h3>
+    </div>
+    {#
+    <div class="col-md-3 col-12">
+      <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#rateSearchModal">
+        Evaluer la recherche
+      </button>
+    </div> #}
+  </div>
+{% endif %}
+<section class="trombino-service-point__list">
+  {% for row in rows %}
+    {%
+      set row_classes = [
+      default_row_class ? 'views-row',
+      'search-result-item'
+    ]
+    %}
+    {% set is_point_open = row.content['#row']._field_opening_days_hours.is_open %}
+    {% set remaining_time = row.content['#row']._field_opening_days_hours.minutes_remaining is same as(-1) ? 0 : row.content['#row']._field_opening_days_hours.minutes_remaining %}
+    {% set open_or_close_hour = row.content['#row']._field_opening_days_hours.next_hour %}
+    {% set opening_days_hours_text_prefix = is_point_open ? 'Ferme' : 'Ouvre' %}
+    {% set opening_days_hours_text_suffix = remaining_time > 0 and remaining_time <=59 ? "dans #{remaining_time} minutes" : "à #{open_or_close_hour}H" %}
+    {% set opening_days_hours_text = opening_days_hours_text_prefix ~ ' ' ~ opening_days_hours_text_suffix %}
+    <div{{ row.attributes.addClass(row_classes) }}>
+      <article class="store-item">
+        <div class="inner-content">
+          <h4 class="name">{{ row.content['#row']._field_type_label }} - {{ row.content['#row']._field_name }}</h4>
+          <div class="opening mb-2">
+            <span class="opening-icon">
+              {% if(is_point_open) %}
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30"><defs><path id="a" d="M0 0h18.75v18.75H0z"></path></defs><g fill="none" fill-rule="evenodd" transform="translate(6 6)"><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><path fill="#32C832" d="M14.273 5.845l-5.617 7.06v-.001a.874.874 0 0 1-1.37 0l-2.81-3.53A.882.882 0 0 1 4.543 8.2l.35-.353A.872.872 0 0 1 6.085 7.8l1.711 1.905 5.193-5.056a.872.872 0 0 1 .6-.238.88.88 0 0 1 .878.882c0 .209-.073.4-.193.551zM9.375 0a9.375 9.375 0 1 0 0 18.75 9.375 9.375 0 0 0 0-18.75z" mask="url(#b)"></path></g></svg>
+              {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill="#CD3C14" fill-rule="evenodd" d="M29.732 25.462l-5.337-5.336 5.337-5.337a1.51 1.51 0 0 0 0-2.135l-2.135-2.134a1.51 1.51 0 0 0-2.135 0l-5.336 5.336-5.337-5.336a1.51 1.51 0 0 0-2.135 0l-2.134 2.134a1.51 1.51 0 0 0 0 2.135l5.336 5.337-5.336 5.336a1.51 1.51 0 0 0 0 2.135l2.134 2.135c.59.59 1.546.59 2.135 0l5.337-5.337 5.336 5.337c.59.59 1.546.59 2.135 0l2.135-2.135a1.51 1.51 0 0 0 0-2.135"></path></svg>
+              {% endif %}
+            </span>
+            <span class="fw-bold">{{ is_point_open ? 'Ouvert' : 'Fermé' }}</span>
+            {% if(remaining_time > 0) %}
+            <span class="opening-days-hours-text"> - {{ opening_days_hours_text }}</span>
+            {% endif %}
+          </div>
+          <address class="location mb-2">
+            {{ row.content['#row']._field_localisation_label | raw | t }}
+          </address>
+          <div class="contact mb-2">
+            <span class="phone">Tel: {{ row.content['#row']._field_phone }}</span> /
+            <span class="email">Email: {{ row.content['#row']._field_email }}</span>
+          </div>
+          <div class="services">
+            <h6 class="title">Services</h6>
+            <ul class="list-unstyled list-inline">
+              {% for service in row.content['#row']._field_services %}
+              <li
+                class="list-inline-item service-list__item is-checked"
+              >
+                <span
+                  class="service-list__item__icon"
+                  data-svg="/src/assets/icons/icon-check.svg" width="30" height="30" viewbox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" data-attributes-set="width,height,viewBox,xmlns" data-rendered="true">
+                    <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M27 7c0-1.105-.888-2-1.983-2-.524 0-1 .206-1.355.541L11.93 17l-3.865-4.319a1.968 1.968 0 0 0-2.692.104l-.793.8C4.22 13.949 4 14.449 4 15c0 .473.163.907.435 1.25l6.344 8a1.972 1.972 0 0 0 3.097 0l12.69-16A2.02 2.02 0 0 0 27 7" fill-rule="evenodd"></path>
+                    </svg>
+                </span>
+                {{ service }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <a class="btn btn-primary btn-action mt-3" href="{{ row.content['#row'].search_api_url[0] }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42">
+              <g fill="none" fill-rule="evenodd">
+                <g fill="currentColor">
+                  <path d="M5.25 8.4h31.5V5.25c0-.58-.47-1.05-1.05-1.05H6.3c-.58 0-1.05.47-1.05 1.05V8.4zM35.7 22.05c-.775 0-1.523-.286-2.1-.804-1.195 1.072-3.005 1.072-4.2 0-1.195 1.072-3.005 1.072-4.2 0-1.195 1.072-3.005 1.072-4.2 0-1.195 1.072-3.005 1.072-4.2 0-1.195 1.072-3.005 1.072-4.2 0-1.195 1.072-3.005 1.072-4.2 0-.857.769-2.065 1.008-3.15.623V37.8H27.3V25.2h6.3v12.6h3.15V21.87c-.337.12-.692.18-1.05.18zM24.15 33.6H8.4v-8.4h15.75v8.4zm12.6-24.15H5.25L4.2 18.9c0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1 0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1 0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1 0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1 0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1 0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1 0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1 0 1.16.94 2.1 2.1 2.1 1.16 0 2.1-.94 2.1-2.1l-1.05-9.45z" transform="translate(-165 -156) translate(165 156)"></path>
+                </g>
+              </g>
+            </svg>
+            Voir la boutique
+          </a>
+        </div>
+      </article>
+      {#
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex align-center">
+            <div class="media">
+              {% set image_path = row.content['#row']._entity.field_image ? row.content['#row']._entity.field_image[0].entity.uri.value : 'modules/orange_yelen_search' ~ '/img/search-img.png' %}
+              {% set image_url = file_url(image_path) %}
+              {% set image_alt = row.content['#row']._entity.field_image ? row.content['#row']._entity.field_image[0].alt : 'Orange Search' %}
+              <img
+                class="img-fluid"
+                src="{{ image_url }}"
+                alt="{{ image_alt }}"
+              >
+            </div>
+            <div class="text">
+              <h5 class="card-title">
+                <a href="{{ row.content['#row'].search_api_url[0] }}"> {{ row.content['#row'].title[0] }}</a>
+              </h5>
+              {{row.content['#row'].body[0] | raw | t}}
+            </div>
+            <div class="action">
+              <a class="btn btn-primary" href={{ row.content['#row'].search_api_url[0] }}>Voir plus</a>
+            </div>
+          </div>
+        </div>
+      </div> #}
+    </div>
+  {% endfor %}
+</section>
+

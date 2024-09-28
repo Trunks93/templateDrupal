@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates.
+ */
+function orange_theme_preprocess_page(&$variables) {
+  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  if ($user && !$user->user_picture->isEmpty()) {
+     $uri = $user->user_picture->entity->getFileUri();
+     $user_display_image = \Drupal::service('file_url_generator')->generateAbsoluteString($uri);
+     $style = \Drupal\image\Entity\ImageStyle::load('thumbnail');
+     $image_uri = $style->buildUri($uri);
+     $user_small_image = \Drupal::service('file_url_generator')->generateAbsoluteString($image_uri);
+  } else {
+    $user_display_image = '';
+    $user_small_image = '';
+  }
+  $variables['user_display_image'] = $user_display_image;
+  $variables['user_small_image'] = $user_small_image;
+
+}
+
