@@ -30,6 +30,7 @@
         "drupal/login_security": "^2.0",
         "drupal/pathauto": "^1.13",
         "drupal/phpmailer_smtp": "^2.2",
+        "drupal/profile": "^1.11",
         "drupal/queue_mail": "^1.6",
         "drupal/redirect_after_login": "^3.0",
         "drupal/redis": "^1.8",

@@ -13,6 +13,8 @@ Thumbs.db
 /src/web/sites/*/files
 /src/web/sites/*/private
 
+/src/web/themes/custom/wisetalent/*
+
 # Dossiers de modules, thèmes et profils contrib
 /src/web/modules/contrib
 /src/web/themes/contrib
