@@ -1,0 +1,37 @@
+<?php
+
+use Drupal\wise_sendmail\Services\SendEmailNotification;
+
+
+
+/**
+ * Implements hook_theme().
+ */
+function wise_sendmail_theme(): array
+{
+  return [
+    'broadcast_list' => ['render element' => 'elements'],
+    'mail' => [
+      'render element' => 'elements',
+      'variables' => [
+        'content' => NULL
+      ]
+    ],
+  ];
+}
+
+
+/**
+ * Implements hook_mail()
+ */
+function wise_sendmail_mail($key, &$message, $params)
+{
+  $options = array('langcode' => $message['langcode']);
+  if ($key == SendEmailNotification::MODULE_NAME) {
+    $message['headers'] = $params['headers'];
+    //$message['from'] = $params['from'];
+    //$message['from'] = 'admin@synelia.tech';
+    $message['subject'] = $params['subject'];
+    $message['body'][] = $params['message'];
+  }
+}

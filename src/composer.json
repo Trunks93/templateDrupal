@@ -26,6 +26,8 @@
         "drupal/gin": "^3.0@RC",
         "drupal/gin_login": "^2.1",
         "drupal/gin_toolbar": "^1.0@RC",
+        "drupal/google_api_client": "^4.3",
+        "drupal/googlelogin-googlelogin": "^9.2",
         "drupal/ldap": "^4.11",
         "drupal/login_security": "^2.0",
         "drupal/pathauto": "^1.13",

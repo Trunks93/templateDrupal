@@ -1,0 +1,3 @@
+services:
+  wise_sendmail.send:
+    class: \Drupal\wise_sendmail\Services\SendEmailNotification
