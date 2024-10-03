@@ -4,7 +4,7 @@
 namespace Drupal\wise_sendmail\Services;
 
 
-class SendEmailNotification
+class SendEmail
 {
 
   const MODULE_NAME = 'wise_sendmail';
@@ -16,7 +16,7 @@ class SendEmailNotification
    * @param array|null $templateHtml
    * @return bool
    */
-  public function sendNotification(string $subject, string $to, string $cc = null, array $templateHtml = null): bool
+  public function send(string $subject, string $to, string $cc = null, array $templateHtml = null): bool
   {
     try {
       $mailManager = \Drupal::service('plugin.manager.mail');

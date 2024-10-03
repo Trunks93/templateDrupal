@@ -27,7 +27,6 @@
         "drupal/gin_login": "^2.1",
         "drupal/gin_toolbar": "^1.0@RC",
         "drupal/google_api_client": "^4.3",
-        "drupal/googlelogin-googlelogin": "^9.2",
         "drupal/ldap": "^4.11",
         "drupal/login_security": "^2.0",
         "drupal/pathauto": "^1.13",
@@ -37,7 +36,9 @@
         "drupal/redirect_after_login": "^3.0",
         "drupal/redis": "^1.8",
         "drupal/search_api": "^1.35",
+        "drupal/social_auth_google": "^4.0",
         "drupal/twig_tweak": "^3.4",
+        "drupal/view_password": "^6.0",
         "drupal/webform": "^6.2",
         "drush/drush": "^13.0"
     },

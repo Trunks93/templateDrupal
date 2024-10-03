@@ -1,0 +1,6 @@
+name: 'Wisecore'
+type: module
+description: 'this module is a set of custom module ready to use'
+package: Wisecore
+core_version_requirement: ^10 || ^11
+
