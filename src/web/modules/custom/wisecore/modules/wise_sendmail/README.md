@@ -27,7 +27,9 @@ This module depends on:
         'node_url' => 'http://drupal.com',
       ]
     ];
-    Drupal::service('wise_sendmail.send')->send($subject, $to, $cc, $templateHtml);
+   //the best practice is to call service via dependency injection
+
+    \Drupal::service('wise_sendmail.send')->send($subject, $to, $cc, $templateHtml);
   }
 ```
 
