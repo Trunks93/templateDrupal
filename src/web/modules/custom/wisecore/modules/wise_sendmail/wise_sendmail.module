@@ -1,6 +1,6 @@
 <?php
 
-use Drupal\wise_sendmail\Services\SendEmailNotification;
+use Drupal\wise_sendmail\Services\SendEmail;
 
 
 
@@ -27,7 +27,7 @@ function wise_sendmail_theme(): array
 function wise_sendmail_mail($key, &$message, $params)
 {
   $options = array('langcode' => $message['langcode']);
-  if ($key == SendEmailNotification::MODULE_NAME) {
+  if ($key == SendEmail::MODULE_NAME) {
     $message['headers'] = $params['headers'];
     //$message['from'] = $params['from'];
     //$message['from'] = 'admin@synelia.tech';
