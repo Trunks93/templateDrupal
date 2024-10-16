@@ -1,0 +1,8 @@
+# Schema for the configuration files of the wiseTalent theme.
+wisetalent.settings:
+  type: theme_settings
+  label: 'wiseTalent settings'
+  mapping:
+    example:
+      type: string
+      label: Example

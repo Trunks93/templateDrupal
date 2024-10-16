@@ -1,0 +1,52 @@
+# Main theme library.
+global:
+  js:
+    js/jquery-3.6.0.min.js: {}
+    js/popper.min.js: {}
+    js/bootstrap.min.js: {}
+    js/magnific-popup.min.js: {}
+    js/waypoints.min.js: {}
+    js/counterup.min.js: {}
+    js/waypoints-sticky.min.js: {}
+    js/isotope.pkgd.min.js: {}
+    js/imagesloaded.pkgd.min.js: {}
+    js/owl.carousel.min.js: {}
+    js/theia-sticky-sidebar.js: {}
+    js/lc_lightbox.lite.js: {}
+    js/bootstrap-select.min.js: {}
+    js/dropzone.js: {}
+    js/jquery.scrollbar.js: {}
+    js/bootstrap-datepicker.js: {}
+    js/jquery.dataTables.min.js: {}
+    js/dataTables.bootstrap5.min.js: {}
+    js/chart.js: {}
+    js/anm.js: {}
+    js/bootstrap-slider.min.js: {}
+    js/swiper-bundle.min.js: {}
+    js/custom.js: {}
+
+  css:
+    base:
+      css/font-awesome.min.css: {}
+      assets/css/plugins/swiper.css: {}
+      assets/css/plugins/cursor.css: {}
+      css/feather.css: {}
+      css/owl.carousel.min.css: {}
+      css/magnific-popup.min.css: {}
+      css/lc_lightbox.css: {}
+      css/dropzone.css: {}
+      css/scrollbar.css: {}
+      css/datepicker.css: {}
+      css/flaticon.css: {}
+      css/swiper-bundle.min.css: {}
+      assets/css/vendor/animate.min.css: {}
+      css/bootstrap.min.css: {}
+      css/bootstrap-select.min.css: {}
+      css/dataTables.bootstrap5.min.css: {}
+      css/select.bootstrap5.min.css: {}
+      css/style.css: {}
+      css/skins-type/skin-1.css: {}
+      css/custom.css: {}
+
+
+

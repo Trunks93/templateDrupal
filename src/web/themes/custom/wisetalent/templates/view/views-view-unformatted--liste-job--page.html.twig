@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+    {% for row in rows %}
+      {% set row_classes = [
+        default_row_class ? 'twm-jobs-list-style1','mb-5'
+      ] %}
+
+      <li>
+        <div {{ row.attributes.addClass(row_classes) }}>
+          <div class="twm-media">
+            <img src="/{{ directory }}/images/jobs-company/pic1.jpg" alt="#">
+          </div>
+          {#  dump(row.content["#row"]._relationship_entities['uid']) #}
+          {% set offre = row.content["#row"]._entity %}
+          <div class="twm-mid-content">
+            <a href="{{ path('entity.node.canonical',{'node':offre.nid.value}) }}" class="twm-job-title">
+              <h4>{{ offre.title.value|capitalize }}<span class="twm-job-post-duration"></span></h4>
+            </a>
+            <p class="twm-job-address">{{ offre.field_commune.value }}, {{ offre.field_ville.value }}</p>
+            <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+          </div>
+          <div class="twm-right-content">
+            <div class="twm-jobs-category green"><span class="twm-bg-green">Nouveauté</span></div>
+            <div class="twm-jobs-amount">{{ offre.field_salaire.value }} <span> FCFA / Mois</span></div>
+            <a href="{{ path('entity.node.canonical',{'node':offre.nid.value}) }}" class="twm-jobs-browse site-text-primary">Consulter l'offre</a>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
