@@ -10,8 +10,13 @@ libraries:
 
 
 
-#libraries-override:
-# claro/global-styling: false
+libraries-override:
+ claro/global-styling:
+   css:
+     component:
+       theme/css/components/form--text.css: false
+     layout:
+       theme/css/layout/layout.css: false
 
 regions:
   menu: 'Main menu'

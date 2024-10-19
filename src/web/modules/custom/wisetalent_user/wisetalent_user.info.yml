@@ -1,0 +1,5 @@
+name: 'Wisetalent user'
+type: module
+description: 'this module is a about user management'
+core_version_requirement: ^10 || ^11
+package: custom

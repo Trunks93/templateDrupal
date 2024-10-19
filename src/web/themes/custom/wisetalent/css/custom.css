@@ -1,3 +1,6 @@
+.page-wrapper * :focus{
+  box-shadow: red !important;
+}
 .header-style-3.no-fixed {
   position: relative !important;
 }

@@ -1,7 +1,7 @@
 name: 'Wise sendmail'
 type: module
 description: 'this module is part of wisecore, and allow you to send email'
-package: wisecore Addon
+package: Wisecore
 core_version_requirement: ^10 || ^11
 dependencies:
   - wisecore:wisecore

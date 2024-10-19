@@ -1,0 +1,23 @@
+#wisetalent_user.login:
+#  path: '/connexion'
+#  defaults:
+#    _title: 'Connexion'
+#    _form: 'Drupal\wisetalent_user\Form\LoginForm'
+#  requirements:
+#    _permission: 'access content'
+
+wisetalent_user.login.user:
+  path: '/login'
+  defaults:
+    _title: 'Login'
+    _controller: 'Drupal\wisetalent_user\Controller\UserController::login'
+  requirements:
+    _permission: 'access content'
+
+wisetalent_user.register.user:
+  path: '/register'
+  defaults:
+    _title: 'Register'
+    _controller: 'Drupal\wisetalent_user\Controller\UserController::register'
+  requirements:
+    _permission: 'access content'
