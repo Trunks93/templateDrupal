@@ -28,8 +28,8 @@ global:
   css:
     base:
       css/font-awesome.min.css: {}
-      assets/css/plugins/swiper.css: {}
-      assets/css/plugins/cursor.css: {}
+      #css/plugins/swiper.css: {}
+      #css/plugins/cursor.css: {}
       css/feather.css: {}
       css/owl.carousel.min.css: {}
       css/magnific-popup.min.css: {}
@@ -39,7 +39,7 @@ global:
       css/datepicker.css: {}
       css/flaticon.css: {}
       css/swiper-bundle.min.css: {}
-      assets/css/vendor/animate.min.css: {}
+     # css/vendor/animate.min.css: {}
       css/bootstrap.min.css: {}
       css/bootstrap-select.min.css: {}
       css/dataTables.bootstrap5.min.css: {}

@@ -2,14 +2,14 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xl-8 col-lg-6 col-md-5 twm-log-reg-media-wrap">
+      <div class="col-xl-7 col-lg-6 col-md-5 twm-log-reg-media-wrap">
         <div class="twm-log-reg-media">
           <div class="twm-l-media">
             <img src="/{{ directory }}/images/login-bg.png" alt="">
           </div>
         </div>
       </div>
-      <div class="col-xl-4 col-lg-6 col-md-7">
+      <div class="col-xl-5 col-lg-6 col-md-7">
         <div class="twm-log-reg-form-wrap">
           <div class="twm-log-reg-logo-head">
             <a href="index.html">
@@ -27,7 +27,7 @@
                   <div class="form-group mt-3 mb-3">
                     <label class="form-check-label rem-forgot" for="Password4">
                       Vous avez déjà un compte ?
-                      <a href="{{ path('user.login') }}" class="site-text-primary">Inscrivez vous</a> dès maintenant
+                      <a href="{{ path('wisetalent_user.login.user') }}" class="site-text-primary">Connectez vous</a> maintenant
                     </label>
                   </div>
                 </div>
@@ -35,6 +35,28 @@
             </div>
             <div class="twm-tabs-style-2">
               {{ drupal_form('Drupal\\wisetalent_user\\Form\\RegisterForm') }}
+              <div class="col-md-12">
+                <div class="form-group">
+                  <span class="center-text-or">Or</span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <a href="http://127.0.0.1:8000/user/login/google" type="submit" class="log_with_google">
+                    <img src="/{{ directory }}/images/google-icon.png" alt="">
+                    Continue with Google
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <button type="submit" class="log_with_facebook">
+                    <i class="fab fa-facebook"></i>
+                    Continue with Facebook
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

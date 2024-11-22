@@ -91,14 +91,14 @@
             </div>
             <div class="extra-cell">
               <div class="header-nav-btn-section">
-                {%  if not logged_in %}
+                {% if not logged_in %}
                   <div class="twm-nav-btn-left">
                     <a class="twm-nav-sign-up" href="{{ path('wisetalent_user.login.user') }}">
                       <i class="feather-log-in"></i> Connexion
                     </a>
                   </div>
-                  {% else %}
-                    <a href="{{ path('user.logout') }}">Déconnection</a>
+                {% else %}
+                  <a href="{{ path('user.logout') }}">Déconnection</a>
                 {% endif %}
                 <div class="twm-nav-btn-right">
                   <a href="#" class="twm-nav-post-a-job">
@@ -136,21 +136,29 @@
   <!-- CONTENT START -->
   <div class="page-content" style="margin: 0">
     <!--Banner Start-->
-      {{ page.header }}
+    {{ page.header }}
     <!--Banner End-->
-    {#  page.breadcrumb #}
-    {% set layout_full = page.sidebar_right ? 'col-lg-8 col-md-12 ' :'col-lg-12 col-md-12' %}
+    {# page.breadcrumb #}
+    {% set layout_full = page.sidebar_right ? 'col-xl-9 col-lg-8 col-md-12 m-b30' :'col-lg-12 col-md-12' %}
     <div class="section-full pt120 pb90 mt-5">
       <div class="container">
         <div class="row">
           {% if page.sidebar_right %}
-            <div class="col-lg-4 col-md-12 rightSidebar">
+            <div class="col-xl-3 col-lg-4 col-md-12 rightSidebar m-b30">
               {{ page.sidebar_right }}
             </div>
+            <div {{ attributes.addClass(layout_full) }}>
+              <div class="twm-right-section-panel site-bg-gray">
+                {{ page.content }}
+              </div>
+            </div>
+          {% else %}
+            <div {{ attributes.addClass(layout_full) }}>
+              {{ page.content }}
+            </div>
           {% endif %}
-          <div {{ attributes.addClass(layout_full) }}>
-            {{ page.content }}
-          </div>
+
+
         </div>
 
       </div>
@@ -190,7 +198,7 @@
 
             <div class="widget widget_about">
               <div class="logo-footer clearfix">
-                <a href="index.html"><img src="images/logo-light-2.png" alt=""></a>
+                <a href="#"><img src="/{{ directory }}/images/logo-light-2.png" alt=""></a>
               </div>
               <p>Many desktop publishing packages and web page editors now.</p>
               <ul class="ftr-list">
@@ -574,7 +582,7 @@
                         <input name="email" type="text" class="form-control" required="" placeholder="Password*">
                       </div>
                     </div-->
-                    {#  drupal_form('Drupal\\user\\Form\\UserLoginForm') #}
+                    {# drupal_form('Drupal\\user\\Form\\UserLoginForm') #}
 
                     <div class="col-lg-12">
                       <div class="form-group mb-3">
@@ -619,7 +627,8 @@
           <div class="modal-footer">
             <span class="modal-f-title">Connectez vous via</span>
             <ul class="twm-modal-social">
-              <li><a href="http://127.0.0.1:8000/user/login/google" class="google-clr"><i class="fab fa-google"></i></a></li>
+              <li><a href="http://127.0.0.1:8000/user/login/google" class="google-clr"><i class="fab fa-google"></i></a>
+              </li>
             </ul>
           </div>
         </form>

@@ -6,6 +6,9 @@ namespace Drupal\wisetalent_user\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\profile\Entity\Profile;
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
 use Drupal\user\UserInterface;
 
 /**
@@ -30,7 +33,7 @@ final class RegisterForm extends FormBase {
     $form['username'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Username'),
-      '#size' => 60,
+      '#size' => 30,
       '#maxlength' => UserInterface::USERNAME_MAX_LENGTH,
       '#required' => TRUE,
       '#id'=>'username',
@@ -42,7 +45,7 @@ final class RegisterForm extends FormBase {
     $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('Adresse Email'),
-      '#size' => 60,
+      '#size' => 30,
       '#required' => TRUE,
       '#id'=>'email',
       '#attributes' => [
@@ -50,7 +53,7 @@ final class RegisterForm extends FormBase {
         'required' => 'required',
       ],
     ];
-    $form['Profils'] = [
+    $form['profils'] = [
       '#type' => 'select',
       '#id'=>'profils',
       '#title' => $this->t('Profils'),
@@ -58,7 +61,7 @@ final class RegisterForm extends FormBase {
       '#options' => [
         'freelance'=>'Freelance',
         'entreprise'=>'Entreprise',
-        'talent'=>'Talent',
+        'candidat'=>'Candidat',
       ],
       '#attributes' => [
         'placeholder' => 'Selectioner votre profils' ,
@@ -107,6 +110,18 @@ final class RegisterForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
+    $username = $form_state->getValue('username');
+    $email = $form_state->getValue('email');
+    $profils = $form_state->getValue('profils');
+    $password = $form_state->getValue('password');
+    $confirm = $form_state->getValue('confirm');
+
+    if($confirm != $password ){
+      $form_state->setErrorByName(
+             'password',
+             $this->t('Les mots de passe ne correspondent pas.'),
+           );
+    }
     // @todo Validate the form here.
     // Example:
     // @code
@@ -123,6 +138,37 @@ final class RegisterForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
+    $username = $form_state->getValue('username');
+    $email = $form_state->getValue('email');
+    $profils = $form_state->getValue('profils');
+    $password = $form_state->getValue('password');
+
+    // Create user object.
+    $user = User::create();
+
+//Mandatory settings
+    $user->setUsername($username); //This username must be unique and accept only a-Z,0-9, - _ @ .
+    $user->setPassword($password);
+    $user->enforceIsNew();
+    $user->setEmail($email);
+    $user->set('field_profils',$profils);
+    //$user->addRole(RoleInterface::AUTHENTICATED_ID); //E.g: authenticated or administrator
+    $user->activate();
+    try{
+      $user->save();
+      $created = true;
+    }catch (\Exception $e){
+      $form_state->setErrorByName('erreur', 'test');
+    }
+    if($created){
+      $profile = Profile::create([
+        'type' => $profils, // Remplacez par le type de profil souhaité.
+        'uid' => $user->id(),
+        'status' => 1,
+      ]);
+      $profile->save();
+    }
+
     $this->messenger()->addStatus($this->t('The message has been sent.'));
     $form_state->setRedirect('<front>');
   }
