@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\wisetalent_user\Plugin\Block;
 
+use Drupal\Core\Block\Annotation\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\user\Entity\User;
@@ -44,7 +45,8 @@ final class ProfileSidebarBlock extends BlockBase {
         'user_display_image'=>$user_display_image,
         'user_small_image'=>$user_small_image,
         'current_user'=>$user->getAccountName(),
-        'email_user'=>$user->getEmail()
+        'email_user'=>$user->getEmail(),
+        'id_user'=>$user->id()
       ],
       '#cache'=>[
         'max-age' => 0

@@ -50,4 +50,14 @@ class UserController extends ControllerBase
     ];
   }
 
+  /**
+   * Tableau de bord profile utilisateur
+   * @return string[]
+   */
+  public function dashboard(){
+    return[
+      "#markup"=>'<h2> Tableau de bord</h2>'
+    ];
+  }
+
 }

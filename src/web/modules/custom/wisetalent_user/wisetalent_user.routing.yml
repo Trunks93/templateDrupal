@@ -14,6 +14,14 @@ wisetalent_user.login.user:
   requirements:
     _permission: 'access content'
 
+wisetalent_user.dashboard:
+  path: '/user/{id}/dashboard'
+  defaults:
+    _title: 'Dashboard'
+    _controller: 'Drupal\wisetalent_user\Controller\UserController::dashboard'
+  requirements:
+    _permission: 'access content'
+
 wisetalent_user.register.user:
   path: '/register'
   defaults:

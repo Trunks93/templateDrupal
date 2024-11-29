@@ -13,16 +13,15 @@
 
     <div class="twm-nav-list-1">
       <ul>
-        <li><a href="#"><i class="fa fa-tachometer-alt"></i> Tableau de bord</a></li>
-        <li class="active"><a href="#"><i class="fa fa-user"></i> Mes infos de connexion</a></li>
-        <li><a href="#"><i class="fa fa-receipt"></i> Mon parcours </a></li>
+        <li class="active"><a href="#"><i class="fa fa-tachometer-alt"></i> Tableau de bord</a></li>
+        <li><a href="{{ path('user.edit') }}"><i class="fa fa-user"></i> Mon profils</a></li>
+        <li><a href="{{ path('node.add',{'node_type':'parcours'}) }}"><i class="fa fa-file"></i> Mon parcours</a></li>
+        <li><a href="#"><i class="fa fa-receipt"></i> Profils </a></li>
         <li><a href="#"><i class="fa fa-suitcase"></i> Applied Jobs</a></li>
-        <li><a href="#"><i class="fa fa-file-download"></i> Saved Jobs</a></li>
         <li><a href="#"><i class="fa fa-paperclip"></i> CV Manager</a></li>
         <li><a href="#"><i class="fa fa-bell"></i> Job Alerts</a></li>
         <li><a href="#"><i class="fa fa-fingerprint"></i> Change Passeord</a></li>
         <li><a href="#"><i class="fa fa-comments"></i>Chat</a></li>
       </ul>
     </div>
-
   </div>
