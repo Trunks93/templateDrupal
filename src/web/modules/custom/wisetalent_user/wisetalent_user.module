@@ -82,56 +82,62 @@ use Drupal\user\UserInterface;
     ];
     $form['#suffix'] = '</div>';
   }
-  $user = \Drupal::currentUser();
-  $user = User::load($user->id());
-  $profil = $user->field_profils->value;
+   $user = \Drupal::currentUser();
+   $user = User::load($user->id());
+   $profil = $user->field_profils->value;
 
-  if($form_id == 'user_form'){
-    switch ($profil){
-      case 'candidat':
-        unset($form['field_nombre_employee']);
-        unset($form['field_raison_social']);
-        unset($form['field_situation_geographique']);
-        unset($form['field_telephone']);
-        $form['field_nom_prenoms']['widget'][0]['value']['#required'] = TRUE;
-        $form['field_niveau_scolaire']['widget']['#required'] = TRUE;
-        $form['field_contact_whatsapp']['widget'][0]['value']['#required'] = TRUE;
+   if($form_id == 'user_form'){
+     switch ($profil){
+       case 'candidat':
+         unset($form['field_nombre_employee']);
+         unset($form['field_raison_social']);
+         unset($form['field_situation_geographique']);
+         unset($form['field_telephone']);
+         $form['field_nom_prenoms']['widget'][0]['value']['#required'] = TRUE;
+         $form['field_niveau_scolaire']['widget']['#required'] = TRUE;
+         $form['field_contact_whatsapp']['widget'][0]['value']['#required'] = TRUE;
 
-        break;
-      case 'entreprise'||'employeur':
-        unset($form['field_nom_prenoms']);
-        unset($form['field_niveau_scolaire']);
-        unset($form['field_contact_whatsapp']);
-        $form['field_nombre_employee']['widget']['#required'] = TRUE;
+         break;
+       case 'entreprise'||'employeur':
+         unset($form['field_nom_prenoms']);
+         unset($form['field_niveau_scolaire']);
+         unset($form['field_contact_whatsapp']);
+         $form['field_nombre_employee']['widget']['#required'] = TRUE;
 
-        $form['field_raison_social']['widget'][0]['value']['#required'] = TRUE;
-        $form['field_situation_geographique']['widget'][0]['value']['#required'] = TRUE;
-        $form['field_telephone']['widget'][0]['value']['#required'] = TRUE;
-        break;
-      case 'freelance':
-        unset($form['field_nombre_employee']);
-        unset($form['field_raison_social']);
-        unset($form['field_situation_geographique']);
-        unset($form['field_telephone']);
-        $form['field_nom_prenoms']['widget'][0]['value']['#required'] = TRUE;
-        $form['field_niveau_scolaire']['widget']['#required'] = TRUE;
-        $form['field_contact_whatsapp']['widget'][0]['value']['#required'] = TRUE;
-        break;
-    }
-    $form['actions'] = [
-      '#type' => 'actions',
-      '#prefix' => '<div class="col-md-12">',
-      '#suffix' => '</div>',
-    ];
-    $form['actions']['submit'] = [
-      '#type' => 'submit',
-      '#value' => 'Enregistrer',
-      '#attributes'=>[
-        'class' => ['site-button']
-      ]
-    ];
-    $form['#suffix'] = '</div>';
-  }
+         $form['field_raison_social']['widget'][0]['value']['#required'] = TRUE;
+         $form['field_situation_geographique']['widget'][0]['value']['#required'] = TRUE;
+         $form['field_telephone']['widget'][0]['value']['#required'] = TRUE;
+         break;
+       case 'freelance':
+         unset($form['field_nombre_employee']);
+         unset($form['field_raison_social']);
+         unset($form['field_situation_geographique']);
+         unset($form['field_telephone']);
+         $form['field_nom_prenoms']['widget'][0]['value']['#required'] = TRUE;
+         $form['field_niveau_scolaire']['widget']['#required'] = TRUE;
+         $form['field_contact_whatsapp']['widget'][0]['value']['#required'] = TRUE;
+         break;
+     }
+/*
+     $form['actions'] = [
+       '#type' => 'actions',
+       '#prefix' => '<div class="col-md-12">',
+       '#suffix' => '</div>',
+     ];
+     $form['actions']['submit'] = [
+       '#type' => 'submit',
+       '#value' => t('Save'),
+       '#attributes'=>[
+         'class' => ['site-button']
+       ]
+     ];
+*/
+     //dump($form);
+     //$form['#suffix'] = '</div>';
+   }
+
   return $form;
 }
+
+
 

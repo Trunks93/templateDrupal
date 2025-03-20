@@ -7,6 +7,7 @@ namespace Drupal\wisetalent_user\Plugin\Block;
 use Drupal\Core\Block\Annotation\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\image\Entity\ImageStyle;
+use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
 
 /**
@@ -38,6 +39,17 @@ final class ProfileSidebarBlock extends BlockBase {
       $user_small_image = '';
     }
 
+    $query = \Drupal::entityQuery('node')
+      ->condition('uid', $user->id()) // Filtre par l'UID de l'utilisateur.
+      ->condition('type','parcours')
+      ->condition('status', 1) // Facultatif : Filtre les nœuds publiés uniquement.
+      ->sort('created', 'DESC') // Tri par date de création, du plus récent au plus ancien.
+      ->accessCheck(TRUE);
+    // Exécute la requête pour obtenir les IDs des nœuds.
+    $parcours = $query->execute();
+    if(!empty($parcours)){
+     $node = Node::load(current($parcours));
+    }
 
     $build['content'] = [
       '#theme' => 'profile_sidebar',
@@ -46,7 +58,8 @@ final class ProfileSidebarBlock extends BlockBase {
         'user_small_image'=>$user_small_image,
         'current_user'=>$user->getAccountName(),
         'email_user'=>$user->getEmail(),
-        'id_user'=>$user->id()
+        'id_user'=>$user->id(),
+        'parcours'=>$node?$node->id():''
       ],
       '#cache'=>[
         'max-age' => 0

@@ -1,10 +1,14 @@
-#wisetalent_user.login:
-#  path: '/connexion'
-#  defaults:
-#    _title: 'Connexion'
-#    _form: 'Drupal\wisetalent_user\Form\LoginForm'
-#  requirements:
-#    _permission: 'access content'
+wisetalent_user.parcours_edit_by_uuid:
+  path: '/mon_parcours/{uuid}/edit'
+  defaults:
+    _controller: '\Drupal\wisetalent_user\Controller\UserController::editNodeByUuid'
+    _title: 'Modifier le nœud par UUID'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      uuid:
+        type: string
 
 wisetalent_user.login.user:
   path: '/login'
@@ -27,5 +31,14 @@ wisetalent_user.register.user:
   defaults:
     _title: 'Register'
     _controller: 'Drupal\wisetalent_user\Controller\UserController::register'
+  requirements:
+    _permission: 'access content'
+
+
+cv_form.form:
+  path: '/user/parcours'
+  defaults:
+    _form: '\Drupal\wisetalent_user\Form\CVForm'
+    _title: 'Soumettre un CV'
   requirements:
     _permission: 'access content'
